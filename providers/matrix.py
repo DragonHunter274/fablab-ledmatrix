@@ -4,7 +4,7 @@ import socket
 import time
 from PIL import Image
 
-UDP_IP = "rgbmatrix.local"
+UDP_IP = "10.100.198.159"
 UDP_PORT = 9998
 SIZE = (96,64)
 
@@ -20,7 +20,7 @@ class Matrix:
         # im = Image.open("./album.jpg")
         im = im.transpose(Image.FLIP_LEFT_RIGHT)
         #im = im.transpose(Image.FLIP_TOP_BOTTOM)
-        im.thumbnail(SIZE, Image.ANTIALIAS)
+        im.thumbnail(SIZE, Image.BILINEAR)
 
         background = Image.new('RGB', SIZE, (0, 0, 0))
         background.paste(im, (int((SIZE[0] - im.size[0]) / 2), int((SIZE[1] - im.size[1]) / 2)))
